@@ -42,7 +42,7 @@ int main() {
 
         // Save results
         //FILE *fptr = fopen("/home/test/output.txt", "w");
-        FILE *fptr = fopen("output.txt", "w");
+        FILE *fptr = fopen("source_samples.txt", "w");
 
         for (int i = 1; i < num_samples; i++) {
                 fprintf(fptr, "%d\n", (results[i].latency-results[i-1].latency));

@@ -10,7 +10,7 @@ numbers_8bit = []
 
 
 # Wczytanie liczb z pliku
-with open('output.txt') as f:
+with open('source_samples.txt') as f:
     for x in f.readlines():
         x_int = int(x)  # konwersja na liczbe calkowita
         numbers.append(int(x_int))
@@ -68,4 +68,7 @@ with open('final_trn.txt', 'w') as f:
 
     
 et = time.time()
-print('Execution time:', '{0:.10f}'.format((et - st)*(10**(9))), 'ns')
+
+with open('time_python.txt', 'w') as f:
+    
+    print('Execution time:', '{0:.10f}'.format((et - st)*(10**(9))), 'ns', file=f)
