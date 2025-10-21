@@ -22,24 +22,9 @@ Metoda poprawy właściwości statystycznych - preprocessing
 
 
 
-Uzyskana entropia po preprocessingu, dla powyższego rozkładu wynosi 7,091 bita.
-
-
-Metoda poprawy właściwości statystycznych - szyfrowanie
-
-Aby jeszcze bardziej poprawić właściwości statystyczne, sięgnęliśmy po bibliotekę Cryptodome dla Python i szyfrowanie trybem ECB - Electronic Codebook.
-
-Ten sposób szyfrowania danych wymaga podania 16-bitowego klucza. Minimalna ilość danych, jaką można zaszyfrować za jednym razem wynosi 16 bitów. Szyfrowanie ECB dzieli dane na bloki, a następnie szyfruje je jednakowym kluczem. Po zaszyfrowaniu, kod dla jednego bloku ma 128 bitów. Jeśli dwa bloki mają tę samą wartość, to zaszyfrowana wartość będzie również jednakowa. Ten brak działania na zasadzie kontekstu powoduje, że w przypadku utraty danych w wyniku transmisji, nadal można rozszyfrować pomyślnie przesłaną część. Wadą tego rozwiązania jest utrata bezpieczeństwa, która w tym aspekcie nie dotyczy naszych zastosowań. 
-
-Aby zaszyfrować dane po preprocessingu, zostają one spakowane jako 8-bitowe ciągi zer i jedynek do pliku, a następnie są odczytywane jako 16-bitowe wyrazy typu “string”. W wyniku szyfrowania ECB w Cryptodome, z jednego 16-bitowego wyrazu przed szyfrowaniem, zostaje utworzony 128-bitowy wyraz zaszyfrowany. Następnie, ciągi zaszyfrowanych danych są konwertowane na ich binarną reprezentację i w taki sposób zapisywane do pliku.
-
-W wyniku szyfrowania wyrazów o minimalnej długości, otrzymujemy dane o 8 razy większej objętości. Przemnażając to przez wydajność poprzedniego etapu, uzyskujemy ostatecznie 3 razy więcej bitów na wyjściu, niż w 8-bitowych kawałkach wartości próbek generatora szumu.
-
-W celu analizy danych po zaszyfrowaniu, ciąg zer i jedynek został ponownie podzielony na 8-bitowe kawałki, które zapisywane są jako próbki.
 Uzyskana entropia po preprocessingu wynosi 7,091 bita
 
 
-
 Metoda poprawy właściwości statystycznych - szyfrowanie
 
 Aby jeszcze bardziej poprawić właściwości statystyczne, sięgnęliśmy po bibliotekę Cryptodome dla Python i szyfrowanie trybem ECB - Electronic Codebook.
@@ -51,6 +36,7 @@ Aby zaszyfrować dane po preprocessingu, zostają one spakowane jako 8-bitowe ci
 W wyniku szyfrowania wyrazów o minimalnej długości, otrzymujemy dane o 8 razy większej objętości. Przemnażając to przez wydajność poprzedniego etapu, uzyskujemy ostatecznie 3 razy więcej bitów na wyjściu, niż w 8-bitowych kawałkach wartości próbek generatora szumu.
 
 W celu analizy danych po zaszyfrowaniu, ciąg zer i jedynek został ponownie podzielony na 8-bitowe kawałki, które zapisywane są jako próbki.
+
 
 Uzyskana entropia po szyfrowaniu wynosi 7,985 bita.
 
